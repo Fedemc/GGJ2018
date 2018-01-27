@@ -10,14 +10,20 @@ public class LevelManager : MonoBehaviour {
     public GameObject Btns;
     public GameObject WinTxt;
 
+    public SpriteRenderer[] P1_CellArray;
+    public SpriteRenderer[] P2_CellArray;
+
     private int LifeP1 = 3, LifeP2 = 3;
-
-
 
 	// Use this for initialization
 	void Start ()
     {
-		
+		//Setear arrays de celdas vida todos ON
+        for(int i=0; i<P1_CellArray.Length;i++)
+        {
+            P1_CellArray[i].enabled = true;
+            P2_CellArray[i].enabled = true;
+        }
 	}
 	
 	// Update is called once per frame
@@ -31,13 +37,13 @@ public class LevelManager : MonoBehaviour {
     {
         if (LifeP1 == 0)
         {
-            LvlState = GameState.P1_Win;
+            LvlState = GameState.P2_Win;
         }
         else
         {
             if (LifeP2 == 0)
             {
-                LvlState = GameState.P2_Win;
+                LvlState = GameState.P1_Win;
             }
         }
     }
@@ -61,8 +67,18 @@ public class LevelManager : MonoBehaviour {
     public void SubstractLife(int playerIndex)
     {
         if (playerIndex == 1)
+        {
             LifeP1--;
+            //Apagar una celda P1
+            P1_CellArray[LifeP1].enabled = false;
+        }
+            
         else
+        {
             LifeP2--;
+            //Apagar una celda P2
+            P2_CellArray[LifeP2].enabled = false;
+        }
+
     }
 }
