@@ -29,6 +29,7 @@ public class CPlayerController : MonoBehaviour
     private p_state playerState;
     [SerializeField] float deadZone = 0.8f;
     private CPlayerController playerContr;
+    private LevelManager lvlManager;
 
 
     public int playerId;
@@ -42,7 +43,8 @@ public class CPlayerController : MonoBehaviour
         playerContr = GetComponent<CPlayerController>();
 
         CurrentPoint = 0;
-        transform.position = Points[0].transform.position;       
+        transform.position = Points[0].transform.position;
+        lvlManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -51,19 +53,21 @@ public class CPlayerController : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        Move();
-        GetImputJoy();
+        if(lvlManager.LvlState == LevelManager.GameState.Jugando)
+        {
+            Move();
+            GetImputJoy();
+        }        
 
         if (CurrentState == STATE_Stay)
         {
+
         }
         if (CurrentState == STATE_Moving)
         {
             if (timer >= CoolDownToMove)
                 SetState(STATE_Stay);
         }
-
-
     }
 
     public void SetLastButton(int aLastButton)

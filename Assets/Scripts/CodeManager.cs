@@ -27,6 +27,8 @@ public class CodeManager : MonoBehaviour
     private const int STATE_WaitingForClash = 1;
     private const int STATE_Clash = 2;
 
+    private LevelManager lvlManager;
+
 
     // Use this for initialization
     void Start()
@@ -37,6 +39,8 @@ public class CodeManager : MonoBehaviour
 
         CodigosAcertadosP1 = 0;
         CodigosAcertadosP2 = 0;
+
+        lvlManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -51,23 +55,19 @@ public class CodeManager : MonoBehaviour
 			{
 				Debug.Log ("Gano player 1");
 				SetState (STATE_Fight);
-
-
-			}
+                //Restarle vida al P2
+                lvlManager.SubstractLife(2);
+            }
 
 			if (CodigosAcertadosP2 >= CurrentCode.Length) 
 			{
 				Debug.Log ("Gano player 2");
 				SetState (STATE_Fight);
-			}
-
-
-		}
+                //Restarle vida al P1
+                lvlManager.SubstractLife(1);
+            }
+        }
 	}
-
-
-
-
 
 
     public void GetCode(int aCantButtons)
@@ -116,8 +116,6 @@ public class CodeManager : MonoBehaviour
         }
     }
 
-
-
     public void FalloPlayer(int aPlayerId)
     {
         Debug.Log("Fallaste, Vuelve a empezar");
@@ -146,13 +144,11 @@ public class CodeManager : MonoBehaviour
 			SetNewGloboCombo();
 			CodigosAcertadosP1 = 0;
 			CodigosAcertadosP2 = 0;
-
-
-			
 		}
 
 		if (CurrentState == STATE_WaitingForClash)
 		{
+
 		}
 
     }

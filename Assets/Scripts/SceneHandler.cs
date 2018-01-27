@@ -18,13 +18,18 @@ public class SceneHandler : MonoBehaviour {
 		
 	}
 
-    void LoadMainStage()
+    public void LoadMainStage()
     {
         SceneManager.LoadScene(1);
     }
 
-    void QuitGame()
+    public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

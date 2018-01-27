@@ -10,6 +10,10 @@ public class LevelManager : MonoBehaviour {
     public GameObject Btns;
     public GameObject WinTxt;
 
+    private int LifeP1 = 3, LifeP2 = 3;
+
+
+
 	// Use this for initialization
 	void Start ()
     {
@@ -18,6 +22,27 @@ public class LevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update ()
+    {
+        CheckLife();
+        PlayerWin();
+    }
+
+    private void CheckLife()
+    {
+        if (LifeP1 == 0)
+        {
+            LvlState = GameState.P1_Win;
+        }
+        else
+        {
+            if (LifeP2 == 0)
+            {
+                LvlState = GameState.P2_Win;
+            }
+        }
+    }
+
+    private void PlayerWin()
     {
         if (LvlState == GameState.P1_Win || LvlState == GameState.P2_Win)
         {
@@ -31,5 +56,13 @@ public class LevelManager : MonoBehaviour {
         {
             Btns.SetActive(false);
         }
-	}
+    }
+
+    public void SubstractLife(int playerIndex)
+    {
+        if (playerIndex == 1)
+            LifeP1--;
+        else
+            LifeP2--;
+    }
 }
