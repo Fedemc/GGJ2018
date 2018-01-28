@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1037449432002244}
+  m_IsPrefabParent: 1
+--- !u!1 &1037449432002244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4264236243555776}
+  - component: {fileID: 114948586883273118}
+  - component: {fileID: 81294266921403040}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4264236243555776
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037449432002244}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &81294266921403040
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037449432002244}
+  m_Enabled: 1
+--- !u!114 &114948586883273118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037449432002244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88b8e520ecc500b4293f574c17ff9cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MenuMusic
+    clip: {fileID: 8300000, guid: 33ab508f31f8faf4fa232bb7d3e1004f, type: 3}
+    volume: 0.3
+    pitch: 1.1
+    loop: 1
+    source: {fileID: 0}
+  - name: StageMusic
+    clip: {fileID: 8300000, guid: 4ebe7f4b0da8c474cbabb85ae0be63a1, type: 3}
+    volume: 0.5
+    pitch: 1.1
+    loop: 1
+    source: {fileID: 0}
+  fx:
+  - name: CompleteCombo
+    clip: {fileID: 8300000, guid: f49c5ba5e37449344830dcec01756045, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: MenuStart
+    clip: {fileID: 8300000, guid: ee0d99f566ca94943b2e71120a5e7406, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: P1Wins
+    clip: {fileID: 8300000, guid: e80b7d1b8c42c394780c3066f3d36cbc, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: P2Wins
+    clip: {fileID: 8300000, guid: c3cfd71f2f7c6e648b07fcb67d944c4c, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: 207b898abad5ee3498ecc2ff6b4a7edc, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: ButtonSound
+    clip: {fileID: 8300000, guid: c7ae7b4820a232341844fc883bcdd95e, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}
+  - name: ErrorSound
+    clip: {fileID: 8300000, guid: d585fc463ec2ef248b909fdbaf950631, type: 3}
+    volume: 1
+    pitch: 1.1
+    loop: 0
+    source: {fileID: 0}

@@ -21,7 +21,7 @@ public class CPlayerController : MonoBehaviour
     private const int STATE_Stay = 0;
     private const int STATE_Moving = 1;
 
-    public int LastButton;
+	public int? LastButton;
 
 
 
@@ -30,6 +30,7 @@ public class CPlayerController : MonoBehaviour
     [SerializeField] float deadZone = 0.8f;
     private CPlayerController playerContr;
     private LevelManager lvlManager;
+    
 
 
     public int playerId;
@@ -50,17 +51,18 @@ public class CPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+		
         timer += Time.deltaTime;
 
-        if(lvlManager.LvlState == LevelManager.GameState.Jugando)
-        {
-            Move();
-            GetImputJoy();
-        }        
+//        if(lvlManager.LvlState == LevelManager.GameState.Jugando)
+//        {
+//            
+//        }        
 
         if (CurrentState == STATE_Stay)
         {
+			Move();
+			GetImputJoy();
 
         }
         if (CurrentState == STATE_Moving)
@@ -84,25 +86,39 @@ public class CPlayerController : MonoBehaviour
             tmp = refCodeMaganer.CodigosAcertadosP2;
         }
 
-        if (LastButton == refCodeMaganer.CurrentCode[0 + tmp] && CurrentPoint == refCodeMaganer.CurrentCode[0 + tmp])
+		if (refCodeMaganer.CurrentState == 2) 
+		{
+			
+			if (LastButton == refCodeMaganer.CurrentCode [0]) 
+			{
+				Debug.Log ("CLASH WIN");
+				refCodeMaganer.AcertoPlayerInClash (playerId);
+
+			} 
+			else if
+				(LastButton != null && LastButton != refCodeMaganer.CurrentCode [0]) 
+			{
+				refCodeMaganer.FalloPlayerInClash (playerId);
+			}
+		
+		}
+		else if (LastButton == refCodeMaganer.CurrentCode[0 + tmp] && CurrentPoint == refCodeMaganer.CurrentCode[0 + tmp])
         {
             Debug.Log("Acertaste el botton  y estas en la casilla correcta");
             refCodeMaganer.AcertoPlayer(playerId);
         }
-        else
+		else
         {
             refCodeMaganer.FalloPlayer(playerId);
         }
+		Debug.Log (LastButton);
 
-        LastButton = 10;
     }
 
-    public int GetLastButton()
-    {
-        return LastButton;
-    }
-
-
+	public void CleanLastButton()
+	{
+		LastButton = null;
+	}
     public void ChangePositionDown()
     {
         SetState(STATE_Moving);
@@ -129,9 +145,7 @@ public class CPlayerController : MonoBehaviour
         {
             //Debug.Log("Presionado boton A en player " + playerId);
             //Obtener pos de la mesa
-
             playerContr.SetLastButton(0);
-
             //Verificar que el botón coincida con el botón de la mesa
         }
 

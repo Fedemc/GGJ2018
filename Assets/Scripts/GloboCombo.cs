@@ -6,11 +6,16 @@ public class GloboCombo : MonoBehaviour
 {
 
     public SpriteRenderer[] spritesCombo;
+    public ScaleObjectInTime[] ButtonToScale;
+
+    float timer;
+    public float growFactor = 0.36f;
+    bool noMeAgrande;
 
     // Use this for initialization
     void Start()
     {
-        SetTransparencySprite();
+        SetCorrectColor(1);
     }
 
     // Update is called once per frame
@@ -28,16 +33,31 @@ public class GloboCombo : MonoBehaviour
     }
 
 
-    public void SetTransparencySprite()
+    public void SetCorrectColor(int aCodeError)
     {
-        for (int i = 0; i < spritesCombo.Length; i++)
+        if (aCodeError == 1)
         {
-            spritesCombo[i].color = new Color32(255, 255, 255, 125);
+            for (int i = 0; i < spritesCombo.Length; i++)
+            {
+                spritesCombo[i].color = new Color32(255, 255, 255, 125);
+                ButtonToScale[i].OffGoodButton();
+            }
+        }
+        else if (aCodeError == 2)
+        {
+            for (int i = 0; i < spritesCombo.Length; i++)
+            {
+                spritesCombo[i].color = new Color32(255, 255, 255, 125);
+                ButtonToScale[i].OffGoodButton();
+                ButtonToScale[i].ErrorButton();
+                
+            }
         }
     }
 
     public void SetCorrectButton(int aIndexButton)
     {
         spritesCombo[aIndexButton].color = new Color32(255, 255, 255, 255);
+        ButtonToScale[aIndexButton].OnGoodButton();
     }
 }

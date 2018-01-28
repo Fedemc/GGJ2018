@@ -23,6 +23,15 @@ public class SceneHandler : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
+    public void LoadMainStageFromMenu()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            FindObjectOfType<AudioManager>().PlayFx("MenuStart");
+            Invoke("LoadMainStage", 2f);
+        }
+    }
+
     public void QuitGame()
     {
         Application.Quit();
