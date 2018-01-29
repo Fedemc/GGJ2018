@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 030662eed2be98d42858d7c83fa9cccf
+guid: e40f9a301cd78fc41b885e70c3e83b01
 timeCreated: 1517102023
 licenseType: Free
 TextureImporter:
@@ -65,6 +65,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -74,6 +75,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   - buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -83,6 +85,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
